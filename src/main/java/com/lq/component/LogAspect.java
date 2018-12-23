@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class LogAspect {
 
+    private long startTime;
     // 日志
     private static final Logger LOGGER = LoggerFactory.getLogger(LogAspect.class);
 

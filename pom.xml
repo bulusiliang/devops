@@ -2,21 +2,49 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.lq</groupId>
+    <artifactId>devops</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <!--作者/项目基本信息 start-->
+    <name>${project.artifactId}</name>
+    <description>${project.artifactId} project for Spring Boot</description>
+
+    <url>http://127.0.0.1:8080/index</url>
+    <!--许可协议-->
+    <licenses>
+        <license>
+            <name>Apache 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+            <comments>A business-friendly OSS license</comments>
+        </license>
+    </licenses>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!--统一版本管理-->
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <guava.version>23.0</guava.version>
+    </properties>
+
+    <developers>
+        <developer>
+            <name>bulusiliang</name>
+            <email>13333555582@sina.cn</email>
+        </developer>
+    </developers>
+    <!--作者/项目基本信息 end-->
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.lq</groupId>
-    <artifactId>devops</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>devops</name>
-    <description>Demo project for Spring Boot</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
     <dependencies>
 
@@ -42,17 +70,19 @@
 
 
         <!--mybatis依赖-->
+        <!--官网：https://github.com/baomidou/mybatis-plus-->
+        <!--官网文档：http://baomidou.oschina.io/mybatis-plus-doc-->
         <!--注：mybatis-plus会自动维护mybatis以及mybatis-spring的依赖,所以不需要引入后两者,避免发生版本冲突-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
             <version>3.0.6</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.3.1</version>
-        </dependency>-->
+            <version>1.3.2</version>
+        </dependency>
         <dependency>
             <groupId>org.mybatis.generator</groupId>
             <artifactId>mybatis-generator-core</artifactId>
@@ -78,7 +108,7 @@
             <version>2.0</version>
         </dependency>
 
-        <!-- sfl4j -->
+        <!-- sfl4j
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -89,6 +119,13 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.7</version>
         </dependency>
+        log4j2 异步需要该依赖
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${disruptor.version}</version>
+        </dependency>
+        采用 log4j2 end-->
 
 
         <!--lombok依赖，省略getter、setter方法，简化代码-->
@@ -96,6 +133,33 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+        </dependency>
+
+
+        <!--swagger 依赖 start-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>${springfox-swagger2.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>guava</artifactId>
+                    <groupId>com.google.guava</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger2.version}</version>
+        </dependency>
+        <!--swagger 依赖 end-->
+
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
 
     </dependencies>
