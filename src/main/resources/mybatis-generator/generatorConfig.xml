@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="MysqlContext" targetRuntime="Mybatis3Simple" defaultModelType="flat">
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <!--<property name="mappers" value="com.spdb.component.tool.MyMapper"/>-->
+            <property name="mappers" value="com.baomidou.mybatisplus.core.mapper.BaseMapper"/>
+        </plugin>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1/devops?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8"
+                        userId="root" password="spdb1234">
+        </jdbcConnection>
+
+        <!--对于生成的pojo所在包-->
+        <javaModelGenerator targetPackage="com.lq.model" targetProject="src/main/java"/>
+
+        <!--对于生成的mapper所在目录-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+
+        <!--配置mapper对应的java映射-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.lq.dao" targetProject="src/main/java"/>
+
+        <table tableName="use" domainObjectName="User"></table>
+    </context>
+</generatorConfiguration>
