@@ -1,4 +1,4 @@
-package com.lq.devops;
+package com.lq;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
